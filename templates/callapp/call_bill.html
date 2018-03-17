@@ -1,0 +1,42 @@
+<b>Call Bill</b><p>
+{% if object_list %}
+	<table width=1050 border=yes style=border-spacing:0>
+		<tr height=30>
+		<td width=50><b>Id</b></td>
+        <td width=250><b>Start</b></td>
+        <td width=250><b>End</b></td>
+        <td width=100><b>Source</b></td>
+        <td width=100><b>Destination</b></td>
+        <td width=200><b>Duration</b></td>
+        <td width=150><b>Price</b></td>
+        </tr>
+{% for call in object_list %}
+{% if call.source == request.GET.phone and call.timestampend != null %}
+		<tr height=30>
+		<td>{{ call.id }}</td>
+        <td>{{ call.timestampstart|date:"m-d-Y H:i:s" }}</td>
+        <td>{% if call.timestampend %} {{call.timestampend|date:"m-d-Y H:i:s"  }} {% else %} &nbsp; {% endif %}</td>
+        <td>{{ call.source }}</td>
+        <td>{{ call.destination }}</td>
+        <td>{{ call.duration }}</td>
+        <td>R$ {{ call.price }}</td>
+        </tr>
+{% endif %}
+{% endfor %}
+		<tr height=30>
+		<td colspan=6><b>Total</b></td>
+        <td width=150><b></b></td>
+        </tr>
+    </table>
+    {% else %}
+    <b>No call entries found on the database.</b>
+{% endif %}
+	<p>
+	<table><tr><td width=650 align=center>
+	    <form method="get" action="{% url 'call_bill' %}">
+		Phone: <input name=phone type=text maxlength=9 value="{{request.GET.phone}}">
+		Period: <input id=period type=text  maxlength=5 style=width:80px><p>
+		<input type=submit value="Filter" style=width:120px>
+		<input type=button value="Call List" style=width:120px onclick=location.href="{% url "call_list" %}">
+	    </form>
+    </td></tr></table>

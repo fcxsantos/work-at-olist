@@ -1,0 +1,10 @@
+<b>Delete Call</b>
+<p>
+<table style=border-spacing:0;><tr><td>
+<form method="post">{% csrf_token %}
+    Are you sure you want to delete call {{object.id}} ?
+<p></td></tr><tr><td  style=text-align:center>
+	<button type="submit" style="width:70px">Yes</button>
+	<button type="button" style="width:70px" onClick="javascript:history.go(-1);">No</button>
+</form>
+</td></tr></table>
