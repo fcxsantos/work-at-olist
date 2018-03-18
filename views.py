@@ -1,20 +1,21 @@
-import datetime
+import datetime, time
 from django import forms
 from django.http import HttpResponse
 from django.views.generic import TemplateView,ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from callapp.models import Call
 from rest_framework import viewsets
 from callapp.serializers import CallSerializer
+from callapp.models import Call
 
 class CallList(ListView):
     model = Call
        
 class CallBill(ListView):
     model = Call
+    my_calls = Call.objects.all()
     template_name = "callapp/call_bill.html"
-    
+        
 class CallCreateForm(forms.ModelForm):
     class Meta:
         model = Call
@@ -34,7 +35,7 @@ class CallUpdateForm(forms.ModelForm):
         model = Call
         fields = ['timestampstart', 'timestampend', 'source', 'destination']
         widgets = {
-        'timestampstart': forms.TextInput(attrs={'readonly':True,}),
+        'timestampstart': forms.TextInput(attrs={'readonly':True}),
         'timestampend': forms.TextInput(attrs={'readonly':True}),
         }
 	
@@ -64,6 +65,3 @@ class CallEnd(UpdateView):
     form_class = CallEndForm
     success_url = reverse_lazy('call_list')
 
-class CallViewSet(viewsets.ModelViewSet):
-    queryset = Call.objects.all().order_by('source')
-    serializer_class = CallSerializer
