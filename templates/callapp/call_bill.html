@@ -23,10 +23,10 @@
         </tr>
 {% endif %}
 {% endfor %}
-		<tr height=30>
+		<!--<tr height=30>
 		<td colspan=6><b>Total</b></td>
         <td width=150><b></b></td>
-        </tr>
+        </tr>-->
     </table>
     {% else %}
     <b>No call entries found on the database.</b>
@@ -40,3 +40,6 @@
 		<input type=button value="Call List" style=width:120px onclick=location.href="{% url "call_list" %}">
 	    </form>
     </td></tr></table>
+<script>
+alert("Your current domain is: "+DOMAIN);
+</script>
