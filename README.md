@@ -1,6 +1,6 @@
 Description
 -----------
-This application provides the users to manage telephone calls made from a source phone number to a destination phone number. 
+This application is used to manage telephone calls made from a source phone number to a destination phone number. 
 
 Call List
 ---------
