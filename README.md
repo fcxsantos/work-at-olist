@@ -62,11 +62,11 @@ Period - month and year that can be used to filter calls that were finished in t
 
 Installing and testing instructions
 -----------------------------------
-Python setup download from https://www.python.org/ftp/python/3.6.4/python-3.6.4.exe
+Python setup download from https://www.python.org/ftp/python/3.6.4/python-3.6.4.exe<br>
 pip install python-dateutil - installs dateutil module<br>
 pip install django - installs Django framework<br>
 pip install djangorestframework - installs Django REST framework<br>
-pip install pytz - install pytz<br>
+pip install pytz - installs pytz<br>
 pip install gunicorn - installs gunicorn <br>
 pip install whitenoise - installs whitenoise<br>
 django-admin.py startproject callproj - creates the project<br>
@@ -76,7 +76,7 @@ python manage.py runserver - starts the service<br>
 
 Work environment used to run this project 
 -----------------------------------------
-The next requirements were use in this project:<br>
+The next requirements were used in this project:<br>
 PC with an Intel i5 processor, RAM memory with 8GB, HD SATA with 1TB, Windows 10 as SO and TextPad as text editor
 python-3.6.4 - environment to use Python language<br>
 python-dateutil 2.7.0 - module to manipulate datetime objects<br>
