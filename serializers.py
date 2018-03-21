@@ -4,5 +4,5 @@ from rest_framework import serializers
 class CallSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Call
-        fields = ('timestampstart', 'timestampend', 'source', 'destination')
+        fields = ('id', 'type', 'timestampstart', 'timestampend', 'call_id', 'source', 'destination')
 

@@ -5,8 +5,18 @@ from django.urls import reverse
 class Call(models.Model):
     timestampstart = models.DateTimeField(verbose_name='Start')
     timestampend = models.DateTimeField(verbose_name='End',null=True,blank=True)
-    source = models.CharField(verbose_name='Source',max_length=9)
-    destination = models.CharField(verbose_name='Destination',max_length=9)
+    source = models.CharField(verbose_name='Source',max_length=11)
+    destination = models.CharField(verbose_name='Destination',max_length=11)
+    def get_call_id(self): 
+        return self.id
+    call_id = property(get_call_id)
+    def get_type(self):
+        if self.timestampend is not None:
+            return 1
+        else:
+            return 2
+        return t
+    type = property(get_type)
     def get_secondschargebyday(self, tss, tse):
         if tss.hour < 6:
             if tse.hour < 6:
@@ -47,7 +57,7 @@ class Call(models.Model):
         h = s // 3600
         return h
     hours = property(get_hours)
-    def duration(self):
+    def get_duration(self):
         s = self.seconds
         h = self.hours
         d = h // 86400
@@ -58,11 +68,9 @@ class Call(models.Model):
              d = int(h / 24)
         h = int(h % 24)
         return str(d) + "d " + str(h) + "h " + str(m) + "m " + str(r) + "s "  
+    duration = property(get_duration)
     def get_price(self):
         d = 0.36 + int(self.secondscharge/60) * 0.09
         s = "%8.2f" % d
         return s
     price = property(get_price)
-    def get_total(self):
-        return 0
-    total = property(get_total)
