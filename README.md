@@ -59,3 +59,17 @@ The next fields are also showed:<br>
 Phone - phone number that can be used to filter calls made from a source phone number<br>
 Period - month and year that can be used to filter calls that were finished in the same month and year<br>
 
+Installing and testing instructions
+-----------------------------------
+
+
+Work environment used to run this project 
+-----------------------------------------
+The next requirements were use in this project:<br>
+python-3.6.4 - environment to use Python language<br>
+python-dateutil 2.7.0 - module to manipulate datetime objects<br>
+Django 2.0.3 - Python-based framework for building web applications<br>
+djangorestframework 3.7.7 - toolkit for building Web APIs REST in Django projects<br>
+pytz 2018.3 - World Timezone Definitions for Python<br>
+whitenoise 3.3.1 - makes a web app a self-contained unit that can be deployed anywhere<br>
+gunicorn 19.7 - a Python Web Server Gateway Interface (WSGI) HTTP server<br>
